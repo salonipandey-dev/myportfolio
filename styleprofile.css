@@ -1,12 +1,58 @@
 * {
-    margin: 0;
-    padding:0;
-    background-color: #f1edf3;
-    color:#0c0101;
-    font-size: 1.4 ;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:auto;
+    padding:auto;
+    color:rgb(0, 0, 0);
+    background-color: rgba(72, 37, 3, 0);
+    
+    
+
+}
+img {
+    height:200px;
+    width:200px;
+    border:5px solid rgba(255, 255, 255, 0.2);
+    margin: 40px 50px 20px 70px;
+    border-radius:20px;
+    transition:1s;
+    
+    
+}
+img:hover {
+    box-shadow: 5px 5px 20px #b08868c3;
+    transform:scale(1.001);
+     border-radius:50%;
+
 }
 
+section {
+    font-size: 20px;
+    border:20px solid rgba(255, 255, 255, 0.3);
+    background-color:#e6ccb298;
+    border-radius:30px;
+    margin: 20px 50px 20px 50px;
+    padding: 20px 50px 20px 50px;
+    transition:1s;
 
+    
+}
+section:hover {
+    box-shadow: 5px 5px 30px #b08868c3;
+    transform:scale(1.001);
+}
 
-     
+.firstload{
+    animation: fadeInAnimation 3s;
+    background-image:url("bag.JPG");
+    background-size:cover;
+
+}
+.secondload{
+    animation: fadeInAnimation 6s;
+    background-image:url("bag.JPG");
+    background-size:cover;
+}
+.thirdlaod{
+    animation: fadeInAnimation 9s;
+    background-image:url("bag.JPG");
+    background-size:cover;
+}
