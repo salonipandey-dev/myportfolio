@@ -15,6 +15,9 @@ img {
     margin: 40px 50px 20px 70px;
     border-radius:20px;
     transition:1s;
+    position: relative;
+    left: 500px;
+    
     
     
 }
@@ -33,11 +36,15 @@ section {
     margin: 20px 50px 20px 50px;
     padding: 20px 50px 20px 50px;
     transition:1s;
+
 }
-section:hover {
+section:hover :nth-of-type(4n) {
     box-shadow: 5px 5px 30px #b08868c3;
     transform:scale(1.001);
+    background-color:aliceblue;
+
 }
+
 
 .firstload{
     animation: fadeInAnimation 3s;
