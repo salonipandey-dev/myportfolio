@@ -2,6 +2,7 @@
     margin:auto;
     padding:auto;
     color:rgb(0, 0, 0);
+    
     background-color: rgba(72, 37, 3, 0);
 
 }
@@ -43,7 +44,7 @@ section:hover :nth-of-type(4n) {
 
 }
 
-/*
+
 .firstload{
     animation: fadeInAnimation 3s;
     background-image:url("bag.JPG") ;
