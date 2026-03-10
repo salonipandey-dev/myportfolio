@@ -4,8 +4,6 @@ This is my personal **developer portfolio website** built to showcase my project
 
 The portfolio highlights my journey as a developer and includes information about my technical skills, projects, and ways to connect with me.
 
----
-
 ## 🚀 Features
 
 * Responsive portfolio website
@@ -15,19 +13,15 @@ The portfolio highlights my journey as a developer and includes information abou
 * Skills and technologies section
 * Contact information
 
----
-
 ## 🛠️ Tech Stack
 
 * HTML5
 * CSS3
 * Bootstrap
 
----
 
 ## 📂 Project Structure
 
-```
 portfolio/
 │
 ├── index.html
@@ -35,25 +29,19 @@ portfolio/
 ├── assets/
 │   └── images
 └── README.md
-```
-
----
 
 ## 🌐 Live Demo
 
 You can view the portfolio here:
 
-```
 https://github.com/salonipandey-dev/myportfolio/
 
-```
 
 
 ## 🧑‍💻 About Me
 
 I am a Computer Science student passionate about technology, web development, and continuously learning new skills. I enjoy building projects that improve my understanding of programming and software development.
 
----
 
 ## 📬 Contact
 
@@ -61,7 +49,5 @@ Feel free to connect with me:
 
 * GitHub: https://github.com/salonipandey-dev
 * LinkedIn: https://www.linkedin.com/in/saloni-pandey-56b216290/
-
----
 
 ⭐ If you like this project, feel free to star the repository.
