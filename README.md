@@ -46,6 +46,8 @@ You can view the portfolio here:
 ```
 https://your-username.github.io/myportfolio/
 
+```
+
 
 ## 🧑‍💻 About Me
 
@@ -57,8 +59,8 @@ I am a Computer Science student passionate about technology, web development, an
 
 Feel free to connect with me:
 
-* GitHub: https://github.com/your-username
-* LinkedIn: add-your-link
+* GitHub: https://github.com/salonipandey-dev
+* LinkedIn: https://www.linkedin.com/in/saloni-pandey-56b216290/
 
 ---
 
