@@ -44,7 +44,7 @@ portfolio/
 You can view the portfolio here:
 
 ```
-https://your-username.github.io/myportfolio/
+https://github.com/salonipandey-dev/myportfolio/
 
 ```
 
