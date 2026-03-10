@@ -44,20 +44,8 @@ portfolio/
 You can view the portfolio here:
 
 ```
-https://your-username.github.io/repository-name/
-```
+https://your-username.github.io/myportfolio/
 
----
-
-## 📸 Screenshot
-
-Add a screenshot of your portfolio here.
-
-```
-![Portfolio Screenshot](screenshot.png)
-```
-
----
 
 ## 🧑‍💻 About Me
 
