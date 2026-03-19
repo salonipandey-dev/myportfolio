@@ -2,209 +2,111 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Saloni Pandey | Developer Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Saloni Pandey | Portfolio</title>
 
 <link rel="stylesheet" href="styleprofile.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<div class="container">
 
-<div class="navbar">
+<header class="navbar">
+    <div class="logo">SP</div>
 
-    <div class="logo">
-        SP
-    </div>
+    <nav>
+        <ul>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
 
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Skills</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Education</a></li>
-    </ul>
+    <a href="mailto:salonipandey0716@gmail.com" class="contact-btn">Hire Me</a>
+</header>
 
-    <a href="mailto:salonipandey0716@gmail.com" class="contact-btn">
-        Contact
-    </a>
+<main>
 
-</div>
-
-<div class="hero">
-
+<!-- HERO -->
+<section id="home" class="hero">
     <div class="hero-text">
-
-        <div class="rank">
-            Developer Portfolio
-        </div>
-
-        <h1>
-            SALONI PANDEY
-        </h1>
-
+        <h1>Hi, I'm <span>Saloni</span> 👋</h1>
         <p>
-            Computer Science and Engineering student passionate about
-            web development and software design. I enjoy building
-            clean interfaces and writing efficient code.
-            Currently exploring modern web technologies and
-            real-world development practices.
+            CSE student passionate about building modern web apps and clean UI designs.
         </p>
 
-        <div class="contact-links">
+        <div class="hero-links">
+            <a href="https://github.com/salonipandey-dev" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank">LinkedIn</a>
+        </div>
+    </div>
 
-            <span>📍 Mathura, India</span>
+    <div class="hero-img">
+        <img src="mypic.jpg" alt="Saloni">
+    </div>
+</section>
 
-            <a href="mailto:salonipandey0716@gmail.com">
-                Email
-            </a>
+<!-- SKILLS -->
+<section id="skills" class="section">
+    <h2>Skills</h2>
 
-            <a href="https://github.com/salonipandey-dev" target="_blank">
-                GitHub
-            </a>
+    <div class="grid">
+        <div class="card">Java</div>
+        <div class="card">Python</div>
+        <div class="card">HTML & CSS</div>
+        <div class="card">JavaScript</div>
+        <div class="card">MySQL</div>
+        <div class="card">Git & GitHub</div>
+    </div>
+</section>
 
-            <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank">
-                LinkedIn
-            </a>
+<!-- PROJECTS -->
+<section id="projects" class="section">
+    <h2>Projects</h2>
 
+    <div class="grid">
+
+        <div class="card project">
+            <h3>Spotify Clone</h3>
+            <p>Responsive music UI using HTML & CSS</p>
+            <div class="buttons">
+                <a href="#">Live</a>
+                <a href="https://github.com/salonipandey-dev">GitHub</a>
+            </div>
+        </div>
+
+        <div class="card project">
+            <h3>Portfolio Website</h3>
+            <p>Modern personal portfolio design</p>
+            <div class="buttons">
+                <a href="#">Live</a>
+                <a href="#">GitHub</a>
+            </div>
         </div>
 
     </div>
+</section>
 
-    <div class="character">
-        <img src="mypic.jpg" alt="Saloni Pandey">
-    </div>
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2>Contact</h2>
 
-</div>
+    <form id="contactForm">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
 
-<div class="about-menu">
+</main>
 
-    <h2>ABOUT</h2>
+<footer>
+    <p>© 2026 Saloni Pandey</p>
+</footer>
 
-    <ul>
-        <li>Technical Skills</li>
-        <li>Strengths</li>
-        <li>Languages</li>
-        <li>Education</li>
-        <li>Projects</li>
-        <li>Internship</li>
-    </ul>
-
-</div>
-
-<div class="details">
-
-    <section class="card">
-
-        <h3>Technical Skills</h3>
-
-        <ul>
-            <li>Java</li>
-            <li>Python</li>
-            <li>HTML & CSS</li>
-            <li>MySQL</li>
-            <li>Git & GitHub</li>
-            <li>OOP Concepts</li>
-            <li>DBMS</li>
-            <li>DSA (Basics)</li>
-        </ul>
-
-    </section>
-
-    <section class="card">
-
-        <h3>Strengths</h3>
-
-        <ul>
-            <li>Problem Solving</li>
-            <li>Team Collaboration</li>
-            <li>Adaptability</li>
-            <li>Time Management</li>
-        </ul>
-
-    </section>
-
-    <section class="card">
-
-        <h3>Education</h3>
-
-        <ul>
-
-            <li>
-                <strong>B.Tech CSE</strong><br>
-                Sanskrit University, Mathura (2023 – 2027)
-            </li>
-
-            <li>
-                <strong>Class XII (PCM)</strong><br>
-                J.N.V Banda (2021 – 2022)
-            </li>
-
-            <li>
-                <strong>Class X</strong><br>
-                J.N.V Banda (2019 – 2020)
-            </li>
-
-        </ul>
-
-    </section>
-
-    <section class="card">
-
-        <h3>Projects</h3>
-
-        <div class="project-box">
-
-            <h4>Spotify UI Clone</h4>
-
-            <p>
-                Created a responsive Spotify inspired music interface
-                using HTML and CSS. Focused on layout design,
-                responsive elements and clean UI structure.
-            </p>
-
-            <a href="https://github.com/salonipandey-dev/Spotify-clone-frontend-.git">
-                View Project
-            </a>
-
-        </div>
-
-    </section>
-
-    <section class="card">
-
-        <h3>Internship</h3>
-
-        <h4>
-            Frontend Developer — Akshat Enterprise
-        </h4>
-
-        <p>
-            June 2025 – July 2025
-        </p>
-
-        <ul>
-
-            <li>
-                Designed responsive UI layouts using HTML & CSS
-            </li>
-
-            <li>
-                Worked in a collaborative development environment
-            </li>
-
-        </ul>
-
-    </section>
-
-</div>
-
-</div>
-
+<script src="script.js"></script>
 </body>
 </html>
