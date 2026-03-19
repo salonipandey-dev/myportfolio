@@ -1,11 +1,10 @@
 /* =============================================
-   SALONI PANDEY — Portfolio
+   SALONI PANDEY — Portfolio  [FIXED]
    Theme  : Girly Professional · Elegant Dark
    Palette: Plum bg · Violet accent · Rose pink
    Fonts  : Playfair Display + DM Sans
-   Perf   : GPU-only animations (transform/opacity)
-            contain: layout on cards
-            will-change only where needed
+   Fixes  : Mobile nav, cursor centering, blur perf,
+            keyboard a11y, reduced-motion, skip link
 ============================================= */
 
 /* ── TOKENS ──────────────────────────────────── */
@@ -56,12 +55,16 @@ body {
   line-height: 1.75;
   font-size: 16px;
   overflow-x: hidden;
-  cursor: none;
-  /* ambient mesh — CSS only, zero JS */
+  /* ✅ FIX: Only hide cursor for pointer (mouse) devices, not keyboard/touch */
   background-image:
     radial-gradient(ellipse 70% 55% at 85% 8%,  rgba(192,132,252,.07) 0%, transparent 55%),
     radial-gradient(ellipse 55% 45% at 15% 85%, rgba(244,114,182,.05) 0%, transparent 55%);
   background-attachment: fixed;
+}
+
+/* ✅ FIX: cursor:none only for actual pointer/mouse devices */
+@media (pointer: fine) {
+  body { cursor: none; }
 }
 
 img   { max-width:100%; display:block; }
@@ -69,28 +72,55 @@ a     { text-decoration:none; color:inherit; }
 strong{ color:#fff; font-weight:600; }
 em    { font-style:italic; }
 
-/* ── CURSOR — GPU only, no rAF loop ─────────── */
+/* ✅ FIX: Skip to main content link for keyboard users */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 10px 20px;
+  background: var(--violet);
+  color: #fff;
+  font-family: var(--fb);
+  font-weight: 600;
+  font-size: .9rem;
+  border-radius: 0 0 var(--r-s) var(--r-s);
+  transition: top .2s ease;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+}
+
+/* ── CURSOR — GPU only ───────────────────────── */
+/* ✅ FIX: Use margin instead of hardcoded offset so centering is CSS-driven.
+   This way when the cursor expands on hover, it stays perfectly centered
+   without needing JS to recalculate anything. */
 .cursor {
   position: fixed;
   top: 0; left: 0;
   width: 32px; height: 32px;
+  /* Centering via negative margin — works at any size */
+  margin-left: -16px;
+  margin-top: -16px;
   border: 1.5px solid rgba(192,132,252,.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
   will-change: transform;
-  /* lag via transition — browser-native, zero JS loop */
   transition: transform .1s ease-out, opacity .3s,
               width .25s var(--t), height .25s var(--t),
+              margin .25s var(--t),
               border-color .25s, background .25s;
 }
 
-/* inner dot via pseudo-element — 1 DOM node instead of 2 */
 .cursor::after {
   content: '';
   position: absolute;
-  inset: 50%; /* center */
+  top: 50%; left: 50%;
   transform: translate(-50%,-50%);
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -98,9 +128,12 @@ em    { font-style:italic; }
   transition: transform .15s var(--t);
 }
 
+/* ✅ FIX: Update margin when cursor expands so it stays centered */
 body:has(a:hover)      .cursor,
 body:has(button:hover) .cursor {
   width: 50px; height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
   border-color: var(--violet);
   background: rgba(192,132,252,.07);
 }
@@ -178,6 +211,29 @@ nav { display:flex; gap:2rem; }
   box-shadow: 0 10px 32px rgba(192,132,252,.5);
 }
 
+/* ✅ FIX: Hamburger button — hidden on desktop, shown on mobile */
+.nav__menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1000;
+}
+.nav__menu-btn span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--txt);
+  border-radius: 2px;
+  transition: transform var(--t), opacity var(--t);
+}
+/* Animate hamburger to X when open */
+.nav__menu-btn.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__menu-btn.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav__menu-btn.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ── BUTTONS ─────────────────────────────────── */
 .btn-primary {
   display: inline-flex;
@@ -200,6 +256,11 @@ nav { display:flex; gap:2rem; }
   transform: translateY(-3px);
   box-shadow: 0 14px 38px rgba(192,132,252,.52);
 }
+/* ✅ FIX: Visible focus ring for keyboard nav */
+.btn-primary:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+}
 
 .btn-ghost {
   display: inline-flex;
@@ -219,6 +280,10 @@ nav { display:flex; gap:2rem; }
   border-color: rgba(192,132,252,.4);
   color: var(--violet-l);
   background: rgba(192,132,252,.07);
+}
+.btn-ghost:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
 }
 
 .btn--full { width:100%; justify-content:center; }
@@ -257,7 +322,7 @@ nav { display:flex; gap:2rem; }
   background-clip: text;
 }
 
-/* ── REVEAL — single class toggle ───────────── */
+/* ── REVEAL ──────────────────────────────────── */
 .js-reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -282,7 +347,6 @@ nav { display:flex; gap:2rem; }
 
 .hero__text { flex:1; max-width:560px; }
 
-/* staggered fade-in via animation-delay — no JS */
 .hero__badge,
 .hero h1,
 .hero__role,
@@ -320,7 +384,6 @@ nav { display:flex; gap:2rem; }
   border-radius: 50%;
   background: var(--grad);
   box-shadow: 0 0 8px var(--violet);
-  /* blink = opacity only = compositor thread */
   animation: blink 2s ease infinite;
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
@@ -374,16 +437,25 @@ nav { display:flex; gap:2rem; }
   margin: 0 auto;
 }
 
-/* conic glow ring — transform+opacity only */
+/* ✅ FIX: Move blur to ::after so the animated element itself
+   has no filter — avoids repaint on every animation frame.
+   The parent rotates (GPU), the blurred pseudo-element is static. */
 .img__glow {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
+  animation: spin 9s linear infinite;
+  will-change: transform;
+}
+
+.img__glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
   background: conic-gradient(from 0deg, var(--violet), var(--rose), var(--violet));
   opacity: .35;
   filter: blur(4px);
-  animation: spin 9s linear infinite;
-  will-change: transform;
 }
 
 .hero__img-wrap img {
@@ -565,7 +637,6 @@ nav { display:flex; gap:2rem; }
   transition: border-color var(--t), transform var(--t), box-shadow var(--t);
 }
 
-/* shimmer line — opacity only */
 .card::before {
   content: '';
   position: absolute;
@@ -705,6 +776,10 @@ nav { display:flex; gap:2rem; }
   transform: translateX(5px);
   box-shadow: 0 8px 28px rgba(192,132,252,.1);
 }
+.contact__item:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+}
 .contact__item > span { font-size:1.2rem; flex-shrink:0; }
 .contact__item small {
   display: block;
@@ -785,6 +860,23 @@ nav { display:flex; gap:2rem; }
   letter-spacing: .05em;
 }
 
+/* ✅ FIX: Visible error state on invalid fields */
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(244,114,182,.12);
+}
+
+/* ✅ FIX: Accessible field error messages */
+.field__err {
+  display: block;
+  font-size: .76rem;
+  color: var(--rose);
+  margin-top: 4px;
+  min-height: 1rem;
+  padding-left: 4px;
+}
+
 .form__status {
   font-size: .86rem;
   text-align: center;
@@ -829,7 +921,40 @@ nav { display:flex; gap:2rem; }
   .projects__grid { grid-template-columns:1fr; }
   .card--featured { grid-column:1; }
   .contact__wrap { grid-template-columns:1fr; gap:2rem; }
-  nav { display:none; }
+
+  /* ✅ FIX: Show hamburger button on mobile */
+  .nav__menu-btn { display: flex; }
+  .btn-hire { display: none; } /* Hide on mobile to save space */
+
+  /* ✅ FIX: Full-screen slide-in mobile nav */
+  nav {
+    position: fixed;
+    top: 0; right: -100%;
+    width: min(280px, 85vw);
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    background: rgba(11,8,18,.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid var(--border);
+    transition: right .35s cubic-bezier(.4,0,.2,1);
+    z-index: 900;
+  }
+  nav.open { right: 0; }
+  nav .nav__link { font-size: 1rem; }
+
+  /* Overlay behind mobile nav */
+  .nav__overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 890;
+  }
+  .nav__overlay.show { display: block; }
 }
 
 @media (max-width: 560px) {
@@ -838,4 +963,24 @@ nav { display:flex; gap:2rem; }
   .hero__cta { flex-direction:column; }
   .about__stats { flex-direction:column; }
   .footer { flex-direction:column; gap:.6rem; text-align:center; }
+}
+
+/* ✅ FIX: Respect user's reduced motion preference
+   Disables all animations/transitions for users with
+   vestibular disorders or motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep reveal sections visible immediately */
+  .js-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

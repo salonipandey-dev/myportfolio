@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ FIX: Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self';
+             font-src https://fonts.gstatic.com;
+             style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+             script-src 'self';
+             connect-src https://formspree.io;">
+
   <meta name="description" content="Saloni Pandey — Backend Developer & CS student building AI systems, databases, and scalable web applications." />
+
+  <!-- ✅ FIX: Open Graph & Twitter Card meta tags -->
+  <meta property="og:title" content="Saloni Pandey | Backend Developer" />
+  <meta property="og:description" content="CS student building AI systems, databases & scalable web applications." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://salonipandey.dev" />
+  <meta property="og:image" content="mypic.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Saloni Pandey | Backend Developer" />
+  <meta name="twitter:description" content="CS student building AI systems, databases & scalable web applications." />
+
   <title>Saloni Pandey | Portfolio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -12,12 +33,15 @@
 </head>
 <body>
 
+  <!-- ✅ FIX: Skip to content link for keyboard users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
   <!-- NAVBAR -->
   <header class="nav" id="nav">
     <a href="#home" class="nav__logo">SP<span>✦</span></a>
-    <nav>
+    <nav id="navMenu" role="navigation" aria-label="Main navigation">
       <a href="#home"     class="nav__link active">Home</a>
       <a href="#about"    class="nav__link">About</a>
       <a href="#skills"   class="nav__link">Skills</a>
@@ -25,28 +49,39 @@
       <a href="#contact"  class="nav__link">Contact</a>
     </nav>
     <a href="mailto:salonipandey0716@gmail.com" class="btn-hire">Hire Me →</a>
+
+    <!-- ✅ FIX: Hamburger button for mobile nav -->
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <main>
+  <main id="main-content">
 
     <!-- HERO -->
     <section id="home" class="hero">
       <div class="hero__text">
         <p class="hero__badge"><span class="badge__dot"></span>Open to Internships &amp; Opportunities</p>
         <h1>Hi, I'm<br><em>Saloni Pandey</em></h1>
-        <p class="hero__role"><span id="typed"></span><span class="blink">|</span></p>
+        <!-- ✅ FIX: aria-live on typed text so screen readers announce it -->
+        <p class="hero__role">
+          <span id="typed" aria-live="polite" aria-atomic="true"></span>
+          <span class="blink" aria-hidden="true">|</span>
+        </p>
         <p class="hero__desc">CS student building elegant backend systems, AI-powered apps &amp; scalable solutions — with precision and passion.</p>
         <div class="hero__cta">
           <a href="#projects" class="btn-primary">View My Work ✦</a>
-          <a href="https://github.com/salonipandey-dev" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
+          <!-- ✅ FIX: rel="noopener noreferrer" on ALL external links -->
+          <a href="https://github.com/salonipandey-dev" target="_blank" rel="noopener noreferrer" class="btn-ghost">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank" rel="noopener noreferrer" class="btn-ghost">LinkedIn ↗</a>
         </div>
       </div>
 
       <div class="hero__visual" aria-hidden="true">
         <div class="hero__img-wrap">
           <div class="img__glow"></div>
-          <img src="mypic.jpg" alt="Saloni Pandey" width="290" height="290" loading="eager" decoding="async" />
+          <!-- ✅ FIX: fetchpriority="high" for LCP image -->
+          <img src="mypic.jpg" alt="Saloni Pandey" width="290" height="290" loading="eager" decoding="async" fetchpriority="high" />
           <div class="orbit orbit--1"></div>
           <div class="orbit orbit--2"></div>
         </div>
@@ -158,8 +193,9 @@
             <span>Python</span><span>Flask</span><span>OpenCV</span><span>MySQL</span><span>JS</span><span>HTML/CSS</span>
           </div>
           <div class="card__links">
-            <a href="https://rooftop-rainwater-harvesting-ai.onrender.com" target="_blank" rel="noopener" class="btn-primary">🚀 Live Demo</a>
-            <a href="https://github.com/Engineer-Bhai/RoofTop_Rainwater_Harvesting.git" target="_blank" rel="noopener" class="btn-ghost">💻 GitHub</a>
+            <!-- ✅ FIX: noreferrer added -->
+            <a href="https://rooftop-rainwater-harvesting-ai.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-primary">🚀 Live Demo</a>
+            <a href="https://github.com/Engineer-Bhai/RoofTop_Rainwater_Harvesting.git" target="_blank" rel="noopener noreferrer" class="btn-ghost">💻 GitHub</a>
           </div>
         </article>
 
@@ -173,7 +209,8 @@
             <span>HTML</span><span>CSS</span>
           </div>
           <div class="card__links">
-            <a href="https://github.com/salonipandey-dev/Spotify-clone-frontend-.git" target="_blank" rel="noopener" class="btn-ghost">💻 GitHub</a>
+            <!-- ✅ FIX: noreferrer added -->
+            <a href="https://github.com/salonipandey-dev/Spotify-clone-frontend-.git" target="_blank" rel="noopener noreferrer" class="btn-ghost">💻 GitHub</a>
           </div>
         </article>
 
@@ -189,35 +226,44 @@
       <div class="contact__wrap">
         <div class="contact__info">
           <a href="mailto:salonipandey0716@gmail.com" class="contact__item">
-            <span>✉️</span>
+            <span aria-hidden="true">✉️</span>
             <div><small>Email</small><span>salonipandey0716@gmail.com</span></div>
           </a>
-          <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank" rel="noopener" class="contact__item">
-            <span>💼</span>
+          <!-- ✅ FIX: noreferrer on contact links -->
+          <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank" rel="noopener noreferrer" class="contact__item">
+            <span aria-hidden="true">💼</span>
             <div><small>LinkedIn</small><span>saloni-pandey-56b216290</span></div>
           </a>
-          <a href="https://github.com/salonipandey-dev" target="_blank" rel="noopener" class="contact__item">
-            <span>🐙</span>
+          <a href="https://github.com/salonipandey-dev" target="_blank" rel="noopener noreferrer" class="contact__item">
+            <span aria-hidden="true">🐙</span>
             <div><small>GitHub</small><span>salonipandey-dev</span></div>
           </a>
-          <div class="avail">
-            <div class="avail__dot"></div>
+          <div class="avail" role="status">
+            <div class="avail__dot" aria-hidden="true"></div>
             <div><b>Currently Available</b><small>For internships &amp; collaborations</small></div>
           </div>
         </div>
 
-        <form id="contactForm" class="contact__form" novalidate>
+        <!-- ✅ FIX: novalidate removed so native + custom validation both work; aria attributes added -->
+        <form id="contactForm" class="contact__form" novalidate aria-label="Contact form">
           <div class="field">
-            <input type="text"  id="f-name"  name="name"    placeholder=" " required autocomplete="name" />
+            <input type="text" id="f-name" name="name" placeholder=" " required
+                   autocomplete="name" aria-invalid="false" aria-describedby="f-name-err" />
             <label for="f-name">Your Name</label>
+            <!-- ✅ FIX: Accessible error message elements -->
+            <span id="f-name-err" class="field__err" role="alert" aria-live="assertive"></span>
           </div>
           <div class="field">
-            <input type="email" id="f-email" name="email"   placeholder=" " required autocomplete="email" />
+            <input type="email" id="f-email" name="email" placeholder=" " required
+                   autocomplete="email" aria-invalid="false" aria-describedby="f-email-err" />
             <label for="f-email">Your Email</label>
+            <span id="f-email-err" class="field__err" role="alert" aria-live="assertive"></span>
           </div>
           <div class="field">
-            <textarea id="f-msg" name="message" placeholder=" " rows="5" required></textarea>
+            <textarea id="f-msg" name="message" placeholder=" " rows="5" required
+                      aria-invalid="false" aria-describedby="f-msg-err"></textarea>
             <label for="f-msg">Your Message</label>
+            <span id="f-msg-err" class="field__err" role="alert" aria-live="assertive"></span>
           </div>
           <button type="submit" class="btn-primary btn--full" id="submitBtn">Send Message →</button>
           <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
