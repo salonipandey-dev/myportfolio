@@ -2,11 +2,6 @@
 (() => {
   'use strict';
 
-  /* ── 1. CURSOR ──────────────────────────────
-     Single element (CSS ::after = dot inside).
-     translate3d = compositor thread only.
-     No requestAnimationFrame loop at all.
-  ─────────────────────────────────────────── */
   const cursor = document.getElementById('cursor');
   if (cursor && window.matchMedia('(pointer:fine)').matches) {
     // Only run on devices that actually have a pointer (not touch)
