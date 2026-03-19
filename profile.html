@@ -2,179 +2,307 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Saloni Pandey — CS Engineering student specializing in backend development, AI systems, and full-stack web applications." />
+  <meta property="og:title" content="Saloni Pandey | Portfolio" />
+  <meta property="og:description" content="Backend Developer & AI enthusiast building scalable systems." />
+  <meta property="og:type" content="website" />
 
-<title>Saloni Pandey | Portfolio</title>
+  <title>Saloni Pandey | Developer Portfolio</title>
 
-<link rel="stylesheet" href="styleprofile.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styleprofile.css" />
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">SP</div>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-    <nav>
-        <ul>
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <a href="#home" class="logo" aria-label="Saloni Pandey Home">SP<span class="logo-dot">.</span></a>
+
+    <nav aria-label="Primary Navigation">
+      <ul>
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
     </nav>
 
-    <a href="mailto:salonipandey0716@gmail.com" class="contact-btn">
-        Hire Me
+    <a href="mailto:salonipandey0716@gmail.com" class="hire-btn" aria-label="Hire Saloni">
+      Hire Me <span class="btn-arrow">→</span>
     </a>
-</header>
+  </header>
 
-<main>
+  <main>
 
-<!-- HERO -->
-<section id="home" class="hero">
-    <div class="hero-text">
+    <!-- HERO -->
+    <section id="home" class="hero" aria-label="Introduction">
+      <div class="hero-content">
 
-        <h1>Hi, I'm <span>Saloni Pandey</span> 👋</h1>
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for Internships & Roles
+        </div>
 
-        <p>
-            Computer Science student focused on backend development,
-            AI-powered applications, and building scalable web systems.
+        <h1 class="hero-title">
+          Hi, I'm <br />
+          <span class="highlight">Saloni Pandey</span>
+        </h1>
+
+        <p class="hero-role">
+          <span id="typed-text"></span><span class="cursor-blink">|</span>
         </p>
 
-        <div class="hero-links">
-            <a href="https://github.com/salonipandey-dev" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank">LinkedIn</a>
+        <p class="hero-desc">
+          CS student building backend systems, AI-powered applications,
+          and scalable web solutions. Passionate about real-world problem solving.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="https://github.com/salonipandey-dev" target="_blank" rel="noopener noreferrer" class="btn-ghost">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank" rel="noopener noreferrer" class="btn-ghost">LinkedIn ↗</a>
         </div>
 
-    </div>
+      </div>
 
-    <div class="hero-img">
-        <img src="mypic.jpg" alt="Saloni">
-    </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-    <h2>About Me</h2>
-
-    <p class="about-text">
-        I am a Computer Science and Engineering student with a strong interest in 
-        backend development and problem solving. I am currently improving my 
-        Data Structures and Algorithms (DSA) skills to build strong logic and 
-        efficient solutions.
-    </p>
-
-    <p class="about-text">
-        Along with this, I am exploring Machine Learning and Computer Vision 
-        to build intelligent systems, and learning Full Stack Development 
-        to create complete, scalable web applications.
-    </p>
-
-    <p class="about-text">
-        I enjoy working on real-world projects, collaborating in teams, and 
-        continuously improving my technical and development skills.
-    </p>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="section">
-    <h2>Skills</h2>
-
-    <div class="grid">
-        <div class="card">Java</div>
-        <div class="card">Python</div>
-        <div class="card">HTML & CSS</div>
-        <div class="card">JavaScript</div>
-        <div class="card">MySQL</div>
-        <div class="card">Flask</div>
-        <div class="card">OpenCV</div>
-        <div class="card">DSA (Ongoing)</div>
-        <div class="card">Machine Learning (Learning)</div>
-        <div class="card">Full Stack (Exploring)</div>
-        <div class="card">Git & GitHub</div>
-    </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="section">
-    <h2>Projects</h2>
-
-    <div class="grid">
-
-        <div class="card project">
-
-            <h3>AI Rooftop Rainwater Harvesting</h3>
-
-            <p>
-                Developed an AI-based system that analyzes rooftop structures and 
-                suggests efficient rainwater harvesting solutions using computer vision.
-            </p>
-
-            <p>
-                <strong>Role:</strong> Backend Developer — worked on API handling,
-                data processing, and integration of computer vision models.
-            </p>
-
-            <p>
-                <strong>Tech:</strong> HTML, CSS, JavaScript, Python, Flask, OpenCV
-            </p>
-
-            <div class="buttons">
-                <a href="https://rooftop-rainwater-harvesting-ai.onrender.com" target="_blank">
-                    🚀 Live Demo
-                </a>
-
-                <a href="https://github.com/Engineer-Bhai/RoofTop_Rainwater_Harvesting.git" target="_blank">
-                    💻 GitHub
-                </a>
-            </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-img-wrapper">
+          <img src="mypic.jpg" alt="Saloni Pandey" loading="eager" />
+          <div class="img-ring"></div>
+          <div class="img-ring ring-2"></div>
         </div>
 
-        <div class="card project">
-            <h3>Spotify UI Clone</h3>
-
-            <p>
-                Designed a responsive Spotify-inspired UI focusing on layout,
-                responsiveness, and user experience.
-            </p>
-
-            <p><strong>Tech:</strong> HTML, CSS</p>
-
-            <div class="buttons">
-                <a href="#">Live</a>
-                <a href="https://github.com/salonipandey-dev/Spotify-clone-frontend-.git">
-                    GitHub
-                </a>
-            </div>
+        <div class="floating-card card-1">
+          <span class="card-icon">🎓</span>
+          <span>B.Tech CSE</span>
         </div>
 
-    </div>
-</section>
+        <div class="floating-card card-2">
+          <span class="card-icon">🤖</span>
+          <span>AI + Backend</span>
+        </div>
+      </div>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-    <h2>Contact</h2>
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <div class="section-label">01 / ABOUT</div>
+      <h2 class="section-title">About Me</h2>
 
-    <form id="contactForm">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+      <div class="about-grid">
+        <div class="about-text-block">
+          <p>
+            I'm a Computer Science & Engineering student with a strong focus on
+            <strong>backend development</strong> and real-world problem solving.
+            I actively sharpen my DSA skills to write efficient, optimized solutions.
+          </p>
+          <p>
+            I'm diving deep into <strong>Machine Learning & Computer Vision</strong>
+            to build intelligent systems, while also exploring full-stack development
+            for end-to-end application building.
+          </p>
+          <p>
+            I love collaborating on impactful projects, learning from teammates,
+            and continuously pushing my technical boundaries.
+          </p>
+        </div>
 
-</main>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-num">2+</span>
+            <span class="stat-label">Projects Shipped</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Learning Mode</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-    <p>© 2026 Saloni Pandey</p>
-</footer>
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+      <div class="section-label">02 / SKILLS</div>
+      <h2 class="section-title">Tech Stack</h2>
 
-<script src="script.js"></script>
+      <div class="skills-categories">
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Languages</h3>
+          <div class="skill-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML & CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Frameworks & Libraries</h3>
+          <div class="skill-tags">
+            <span class="tag">Flask</span>
+            <span class="tag">OpenCV</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Database & Tools</h3>
+          <div class="skill-tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">Git & GitHub</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Currently Learning</h3>
+          <div class="skill-tags">
+            <span class="tag learning">DSA</span>
+            <span class="tag learning">Machine Learning</span>
+            <span class="tag learning">Full Stack Dev</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
+      <div class="section-label">03 / PROJECTS</div>
+      <h2 class="section-title">Featured Work</h2>
+
+      <div class="projects-grid">
+
+        <article class="project-card featured">
+          <div class="project-meta">
+            <span class="project-tag">AI · Computer Vision · Backend</span>
+            <span class="project-status live">🟢 Live</span>
+          </div>
+
+          <h3>AI Rooftop Rainwater Harvesting</h3>
+
+          <p>
+            AI-powered system that analyzes rooftop structures using computer vision
+            and generates efficient rainwater harvesting recommendations — combining
+            sustainability with intelligent automation.
+          </p>
+
+          <div class="project-role">
+            <strong>Role:</strong> Backend Developer — API design, data processing pipeline,
+            and OpenCV model integration.
+          </div>
+
+          <div class="tech-stack">
+            <span>Python</span><span>Flask</span><span>OpenCV</span>
+            <span>JavaScript</span><span>HTML/CSS</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://rooftop-rainwater-harvesting-ai.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              🚀 Live Demo
+            </a>
+            <a href="https://github.com/Engineer-Bhai/RoofTop_Rainwater_Harvesting.git" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+              💻 GitHub
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">Frontend · UI/UX</span>
+          </div>
+
+          <h3>Spotify UI Clone</h3>
+
+          <p>
+            Responsive Spotify-inspired UI clone with pixel-accurate layout,
+            attention to visual hierarchy, and clean component structure.
+          </p>
+
+          <div class="tech-stack">
+            <span>HTML</span><span>CSS</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com/salonipandey-dev/Spotify-clone-frontend-.git" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+              💻 GitHub
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+      <div class="section-label">04 / CONTACT</div>
+      <h2 class="section-title">Let's Connect</h2>
+
+      <p class="contact-desc">
+        Open to internships, collaborations, and interesting projects.
+        Drop a message — I respond fast. 🚀
+      </p>
+
+      <div class="contact-wrapper">
+
+        <div class="contact-links">
+          <a href="mailto:salonipandey0716@gmail.com" class="contact-item" aria-label="Email">
+            <span class="contact-icon">✉️</span>
+            <span>salonipandey0716@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/saloni-pandey-56b216290/" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <span class="contact-icon">💼</span>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/salonipandey-dev" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <span class="contact-icon">🐙</span>
+            <span>GitHub</span>
+          </a>
+        </div>
+
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" />
+            <label for="name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email" />
+            <label for="email">Your Email</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            <label for="message">Your Message</label>
+          </div>
+          <button type="submit" class="btn-primary full-width" id="submitBtn">
+            Send Message <span class="btn-arrow">→</span>
+          </button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Designed & Built by <strong>Saloni Pandey</strong> · © 2026</p>
+    <a href="#home" class="back-top" aria-label="Back to top">↑ Top</a>
+  </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
