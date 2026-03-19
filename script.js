@@ -1,164 +1,178 @@
-/* =============================================
-   script.js — Portfolio Interactions
-============================================= */
 
-// ── CUSTOM CURSOR ──────────────────────────
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
+(() => {
+  'use strict';
 
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
+  /* ── 1. CURSOR ──────────────────────────────
+     Single element (CSS ::after = dot inside).
+     translate3d = compositor thread only.
+     No requestAnimationFrame loop at all.
+  ─────────────────────────────────────────── */
+  const cursor = document.getElementById('cursor');
+  if (cursor && window.matchMedia('(pointer:fine)').matches) {
+    // Only run on devices that actually have a pointer (not touch)
+    let visible = false;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top  = mouseY + 'px';
-});
+    document.addEventListener('mousemove', (e) => {
+      // translate3d avoids layout/paint — stays on GPU
+      cursor.style.transform = `translate3d(${e.clientX - 16}px,${e.clientY - 16}px,0)`;
+      if (!visible) { cursor.style.opacity = '1'; visible = true; }
+    }, { passive: true });
 
-// Smooth ring follow
-function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top  = ringY + 'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
-
-// Hide on leave, show on enter
-document.addEventListener('mouseleave', () => {
-  dot.style.opacity  = '0';
-  ring.style.opacity = '0';
-});
-document.addEventListener('mouseenter', () => {
-  dot.style.opacity  = '1';
-  ring.style.opacity = '1';
-});
-
-
-// ── NAVBAR SCROLL ─────────────────────────
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-  updateActiveNav();
-});
-
-
-// ── ACTIVE NAV LINK ON SCROLL ─────────────
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section[id]');
-
-function updateActiveNav() {
-  const scrollY = window.scrollY + 120;
-  sections.forEach(section => {
-    const top    = section.offsetTop;
-    const height = section.offsetHeight;
-    const id     = section.getAttribute('id');
-    if (scrollY >= top && scrollY < top + height) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-      if (activeLink) activeLink.classList.add('active');
-    }
-  });
-}
-
-
-// ── REVEAL ON SCROLL ──────────────────────
-const revealEls = document.querySelectorAll('.reveal');
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-revealEls.forEach(el => revealObserver.observe(el));
-
-
-// ── TYPED TEXT ────────────────────────────
-const roles = [
-  'Backend Developer',
-  'AI Enthusiast',
-  'Problem Solver',
-  'CS Engineering Student',
-];
-
-let roleIdx  = 0;
-let charIdx  = 0;
-let deleting = false;
-const typedEl = document.getElementById('typed-text');
-
-function typeLoop() {
-  if (!typedEl) return;
-  const current = roles[roleIdx];
-
-  if (!deleting) {
-    typedEl.textContent = current.substring(0, charIdx + 1);
-    charIdx++;
-    if (charIdx === current.length) {
-      deleting = true;
-      setTimeout(typeLoop, 1800);
-      return;
-    }
-  } else {
-    typedEl.textContent = current.substring(0, charIdx - 1);
-    charIdx--;
-    if (charIdx === 0) {
-      deleting = false;
-      roleIdx  = (roleIdx + 1) % roles.length;
-    }
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0'; visible = false;
+    }, { passive: true });
+  } else if (cursor) {
+    // Touch device — remove custom cursor entirely
+    cursor.remove();
+    document.body.style.cursor = 'auto';
   }
-  setTimeout(typeLoop, deleting ? 55 : 90);
-}
-typeLoop();
 
 
-// ── CONTACT FORM ──────────────────────────
-const form       = document.getElementById('contactForm');
-const submitBtn  = document.getElementById('submitBtn');
-const formStatus = document.getElementById('formStatus');
+  /* ── 2. NAV SCROLL ──────────────────────────
+     One scroll listener (passive).
+     Section offsets cached — no DOM queries per scroll.
+  ─────────────────────────────────────────── */
+  const nav      = document.getElementById('nav');
+  const navLinks = [...document.querySelectorAll('.nav__link')];
+  const sections = [...document.querySelectorAll('section[id]')];
 
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  // Cache section tops once; update on resize
+  let sectionMap = buildSectionMap();
 
-    const name    = form.querySelector('input[type="text"]').value.trim();
-    const email   = form.querySelector('input[type="email"]').value.trim();
-    const message = form.querySelector('textarea').value.trim();
+  function buildSectionMap() {
+    return sections.map(s => ({ id: s.id, top: s.offsetTop }));
+  }
 
-    if (!name || !email || !message) {
-      formStatus.textContent = '⚠️ Please fill in all fields.';
-      formStatus.style.color = '#ff6b35';
-      return;
+  function setActiveLink(id) {
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
+  }
+
+  let lastScroll = -1;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y === lastScroll) return;
+    lastScroll = y;
+
+    // Navbar compact class
+    nav.classList.toggle('scrolled', y > 55);
+
+    // Active nav link
+    const active = [...sectionMap].reverse().find(s => y >= s.top - 140);
+    if (active) setActiveLink(active.id);
+  }, { passive: true });
+
+  window.addEventListener('resize', () => { sectionMap = buildSectionMap(); }, { passive: true });
+
+
+  /* ── 3. REVEAL (single observer) ────────────
+     One IntersectionObserver, shared by all .js-reveal.
+  ─────────────────────────────────────────── */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObs.unobserve(entry.target); // stop watching after reveal
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.js-reveal').forEach(el => revealObs.observe(el));
+
+
+  /* ── 4. TYPED TEXT ──────────────────────────
+     setTimeout-based — runs only when typing.
+     Idle when waiting between words.
+  ─────────────────────────────────────────── */
+  const roles = [
+    'Backend Developer',
+    'Database Designer',
+    'AI Enthusiast',
+    'User Testing Advocate',
+    'Problem Solver ✨',
+    'CS Engineering Student',
+  ];
+
+  const typedEl = document.getElementById('typed');
+  if (typedEl) {
+    let ri = 0, ci = 0, del = false;
+
+    function tick() {
+      const word = roles[ri];
+      if (!del) {
+        typedEl.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { del = true; return void setTimeout(tick, 1800); }
+      } else {
+        typedEl.textContent = word.slice(0, --ci);
+        if (ci === 0) { del = false; ri = (ri + 1) % roles.length; }
+      }
+      setTimeout(tick, del ? 45 : 82);
     }
-
-    submitBtn.disabled        = true;
-    submitBtn.textContent     = 'Sending...';
-    formStatus.textContent    = '';
-    formStatus.style.color    = 'var(--accent)';
-
-    // Simulate send (replace with EmailJS / Formspree endpoint)
-    await new Promise(r => setTimeout(r, 1200));
-
-    formStatus.textContent   = '✅ Message sent! I\'ll get back to you soon.';
-    submitBtn.disabled        = false;
-    submitBtn.innerHTML       = 'Send Message <span class="btn-arrow">→</span>';
-    form.reset();
-  });
-}
+    tick();
+  }
 
 
-// ── SMOOTH SCROLL FOR NAV LINKS ───────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', (e) => {
+  /* ── 5. SMOOTH SCROLL ───────────────────────
+     Delegated to one listener — not one per link.
+  ─────────────────────────────────────────── */
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
     const target = document.querySelector(a.getAttribute('href'));
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-});
+
+
+  /* ── 6. CONTACT FORM ────────────────────────
+     Lightweight validation + fake send sim.
+     Replace the await block with EmailJS / Formspree for prod.
+  ─────────────────────────────────────────── */
+  const form       = document.getElementById('contactForm');
+  const submitBtn  = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name  = form['name'].value.trim();
+      const email = form['email'].value.trim();
+      const msg   = form['message'].value.trim();
+
+      if (!name || !email || !msg) {
+        setStatus('⚠️ Please fill in all fields.', 'warn');
+        return;
+      }
+      if (!EMAIL_RE.test(email)) {
+        setStatus('⚠️ Please enter a valid email.', 'warn');
+        return;
+      }
+
+      submitBtn.disabled        = true;
+      submitBtn.textContent     = 'Sending ✦…';
+      setStatus('', '');
+
+      // ↓ Replace with real send (EmailJS / Formspree)
+      await delay(1300);
+
+      setStatus("✅ Message sent! I'll get back to you soon 💜", 'ok');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message →';
+      form.reset();
+    });
+  }
+
+  function setStatus(msg, type) {
+    formStatus.textContent = msg;
+    formStatus.style.color = type === 'warn' ? '#f472b6'
+                           : type === 'ok'   ? '#d8b4fe'
+                           : '';
+  }
+
+  function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+})(); // end IIFE — no globals leaked
