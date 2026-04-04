@@ -23,6 +23,7 @@ Category	Technologies Used
 Frontend	HTML5, CSS3
 Styling	Bootstrap
 Version Control	Git & GitHub
+
 📂 Project Structure
 portfolio/
 │
@@ -47,17 +48,14 @@ Add animations (GSAP / Framer Motion later)
 
 
 🧑‍💻 About Me
-
 I am a Computer Science student passionate about:
 
 Web Development 🌐
 Problem Solving 💡
 Building real-world projects 🚀
-
 Currently focused on improving my skills in DSA, frontend development, and system design basics.
 
 📬 Contact
-
 📌 GitHub:
 👉 https://github.com/salonipandey-dev
 
