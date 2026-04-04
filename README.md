@@ -31,17 +31,21 @@ portfolio/
 ├── assets/
 │   └── images        # Images used in portfolio
 └── README.md
+
 🧠 What I Learned
 Building responsive layouts using Bootstrap
 Structuring a clean and maintainable frontend project
 Improving UI/UX design basics
 Hosting and managing projects on GitHub
-🔥 Future Improvements
+
+Future Improvements
 Add dark mode 🌙
 Integrate JavaScript for interactivity
 Add project filtering system
 Deploy using GitHub Pages / Netlify
 Add animations (GSAP / Framer Motion later)
+
+
 🧑‍💻 About Me
 
 I am a Computer Science student passionate about:
