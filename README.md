@@ -1,7 +1,6 @@
 # 💼 Developer Portfolio
 
 A modern, responsive, and user-friendly **personal portfolio website** showcasing my projects, technical skills, and growth as a **Computer Science Engineering student**.
-
 This portfolio reflects my passion for **web development**, **problem-solving**, and **continuous learning** while serving as a central place to highlight my work, achievements, and technical journey.
 
 ---
