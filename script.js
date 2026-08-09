@@ -1,6 +1,5 @@
 (() => {
   'use strict';
-
   const cursor = document.getElementById('cursor');
 
   if (cursor && window.matchMedia('(pointer:fine)').matches) {
