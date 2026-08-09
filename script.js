@@ -5,7 +5,6 @@
   if (cursor && window.matchMedia('(pointer:fine)').matches) {
     let x = 0, y = 0;
     let cx = 0, cy = 0;
-
     document.addEventListener('mousemove', (e) => {
       x = e.clientX;
       y = e.clientY;
