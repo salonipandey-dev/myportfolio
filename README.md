@@ -1,134 +1,49 @@
-# 💼 Developer Portfolio
+# Saloni Pandey · Portfolio
 
-A modern, responsive, and user-friendly **personal portfolio website** showcasing my projects, technical skills, and growth as a **Computer Science Engineering student**.
-This portfolio reflects my passion for **web development**, **problem-solving**, and **continuous learning** while serving as a central place to highlight my work, achievements, and technical journey.
+A responsive personal portfolio built with semantic HTML, CSS, and vanilla JavaScript. It presents my projects, technical interests, and AI For Good Hackathon recognition.
 
----
+## Run locally
 
-## 🌐 Live Demo
+Open `index.html` in a browser, or serve the folder:
 
-🔗 **Portfolio Repository:**
-https://github.com/salonipandey-dev/myportfolio
-
-> **Live Website:** *(Coming Soon via GitHub Pages / Netlify)* 🚀
-
----
-
-# ✨ Features
-
-* 📱 Fully responsive design (Mobile, Tablet & Desktop)
-* 🎨 Clean, modern, and minimal UI
-* ⚡ Smooth navigation with an organized layout
-* 💼 Dedicated Projects section
-* 🛠️ Technical Skills showcase
-* 👩‍💻 About Me section
-* 📬 Contact section for easy communication
-* 🚀 Optimized and beginner-friendly code structure
-
----
-
-# 🛠️ Tech Stack
-
-| Category            | Technologies          |
-| ------------------- | --------------------- |
-| **Frontend**        | HTML5, CSS3           |
-| **Framework**       | Bootstrap 5           |
-| **Version Control** | Git & GitHub          |
-| **Design**          | Responsive Web Design |
-
----
-
-# 📂 Project Structure
-
-```text
-portfolio/
-│
-├── index.html          # Main webpage
-├── style.css           # Custom styling
-├── assets/
-│   └── images/         # Images and portfolio assets
-└── README.md           # Project documentation
+```sh
+python -m http.server 8000
 ```
 
----
+Then visit `http://localhost:8000`. No dependency installation or build step is required.
 
-# 🖥️ Screenshots
+## Files
 
-> *(Add screenshots of your portfolio here after deployment.)*
+| File                          | Purpose                                                                |
+| ----------------------------- | ---------------------------------------------------------------------- |
+| `index.html`                  | Homepage and portfolio content                                         |
+| `styleprofile.css`            | Colors, layouts, illustrations, and responsive styles                  |
+| `script.js`                   | Mobile navigation, project filtering, copy email, and section tracking |
+| `mypic.jpg`                   | Original profile photo                                                 |
+| `favicon.svg`                 | Portfolio favicon                                                      |
+| `profile.html`, `redirect.js` | Compatibility entry for older portfolio links                          |
 
-```
-Home Page
-Projects Section
-Skills Section
-Contact Section
-```
+## Features
 
----
+- Responsive editorial layout with a purple accent palette and original portrait.
+- Project filtering and expandable contribution details.
+- Keyboard-accessible navigation, focus indicators, skip link, and reduced-motion support.
+- Content, project details, navigation, and email links work without JavaScript.
+- Direct email contact and optional clipboard copying. No simulated message delivery or third-party form service.
+- No runtime JavaScript dependencies. Google Fonts are optional; system fonts are the fallback.
 
-# 🧠 What I Learned
+## Updating content
 
-Building this project helped me strengthen my understanding of:
+Edit project descriptions, skills, recognition, and contact information in `index.html`. Project illustrations are decorative CSS artwork, not application screenshots. Add an actual repository URL for Spotify UI Clone when available; the current text intentionally does not link to an empty URL.
 
-* Responsive web design using Bootstrap
-* Creating clean and maintainable project structures
-* Writing semantic HTML
-* Styling with modern CSS
-* Improving UI/UX fundamentals
-* Organizing Git repositories professionally
-* Documenting projects with Markdown
+For email changes, update the `mailto:` links and the displayed address in `index.html`, plus the clipboard address in `script.js`. To change the visual theme, edit the variables at the top of `styleprofile.css`.
 
----
+## Publishing
 
-# 🚀 Future Improvements
+The site is ready for a static host. For GitHub Pages, select the intended branch and its root folder in the repository's Pages settings. `index.html` is the homepage; `profile.html` keeps old links working. This README does not imply that hosting is already configured.
 
-* 🌙 Dark Mode
-* ✨ JavaScript-powered interactivity
-* 🔍 Project filtering by technology
-* 🎭 Smooth animations (GSAP / Framer Motion)
-* 📄 Resume download option
-* 📝 Blog section
-* 🌍 Deploy on GitHub Pages / Netlify
-* 📊 Visitor counter
-* 📧 Functional contact form
+## Contact
 
----
-
-# 👩‍💻 About Me
-
-Hi, I'm **Saloni Pandey**, a Computer Science Engineering student passionate about building modern, responsive, and user-friendly web applications.
-
-### 🌟 Interests
-
-* 🌐 Web Development
-* 💡 Problem Solving
-* 💻 Data Structures & Algorithms
-* 🚀 Open Source
-* ☁️ Cloud Computing
-* 📚 Continuous Learning
-
-I'm currently focused on improving my skills in **Data Structures & Algorithms, Frontend Development, System Design fundamentals, and Full-Stack Development** while building projects that solve real-world problems.
-
----
-
-# 📬 Connect With Me
-
-### GitHub
-
-🔗 https://github.com/salonipandey-dev
-
-### LinkedIn
-
-🔗 https://www.linkedin.com/in/saloni-pandey-56b216290/
-
----
-
-# ⭐ Support
-
-If you found this project helpful or inspiring, consider giving it a **⭐ Star** on GitHub. It motivates me to continue building and sharing more projects!
-
----
-
-## 📄 License
-
-This project is open source and available under the **MIT License**.
-
+- [GitHub](https://github.com/salonipandey-dev)
+- [LinkedIn](https://www.linkedin.com/in/saloni-pandey-56b216290/)
+- [Email](mailto:salonipandey0716@gmail.com)
