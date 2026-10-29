@@ -42,6 +42,16 @@
   const count = document.querySelector(".project-count");
   if (toolbar && filters.length && projects.length) {
     toolbar.hidden = false;
+    const matches = (project, filter) =>
+      filter === "all" || project.dataset.category === filter;
+    // Keep the filter badges in sync with the cards in the page.
+    filters.forEach((button) => {
+      const badge = button.querySelector(".filter-count");
+      const total = [...projects].filter((project) =>
+        matches(project, button.dataset.filter),
+      ).length;
+      if (badge) badge.textContent = String(total).padStart(2, "0");
+    });
     filters.forEach((button) =>
       button.addEventListener("click", () => {
         filters.forEach((filter) => {
@@ -51,9 +61,7 @@
         });
         let visible = 0;
         projects.forEach((project) => {
-          project.hidden =
-            button.dataset.filter !== "all" &&
-            project.dataset.category !== button.dataset.filter;
+          project.hidden = !matches(project, button.dataset.filter);
           if (!project.hidden) visible += 1;
         });
         count.textContent = `Showing ${visible} project${visible === 1 ? "" : "s"}`;
@@ -63,11 +71,13 @@
 
   const copyButton = document.querySelector(".copy-email");
   const copyStatus = document.querySelector(".copy-status");
-  if (copyButton && copyStatus && navigator.clipboard?.writeText) {
+  // Read the address from the page so it only needs updating in index.html.
+  const email = document.querySelector(".email-address")?.textContent.trim();
+  if (copyButton && copyStatus && email && navigator.clipboard?.writeText) {
     copyButton.hidden = false;
     copyButton.addEventListener("click", async () => {
       try {
-        await navigator.clipboard.writeText("salonipandey0716@gmail.com");
+        await navigator.clipboard.writeText(email);
         copyStatus.textContent =
           "Email copied. Say hello whenever you’re ready.";
       } catch {
