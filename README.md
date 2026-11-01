@@ -4,13 +4,32 @@ A responsive personal portfolio built with semantic HTML, CSS, and vanilla JavaS
 
 ## Run locally
 
-Open `index.html` in a browser, or serve the folder:
+Clone the repository and open its folder:
 
 ```sh
-python -m http.server 8000
+git clone https://github.com/salonipandey-dev/myportfolio.git
+cd myportfolio
 ```
 
-Then visit `http://localhost:8000`. No dependency installation or build step is required.
+Open `index.html` in a browser for a quick preview. To preview over HTTP, run the command for your system from the repository folder:
+
+**Windows (PowerShell or Command Prompt):**
+
+```powershell
+py -m http.server 8000 --bind 127.0.0.1
+```
+
+**macOS or Linux:**
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+If your Python installation uses the `python` command, use it in place of `py` or `python3`.
+
+Then visit [http://127.0.0.1:8000](http://127.0.0.1:8000). Keep the terminal open while previewing; press `Ctrl+C` to stop the server.
+
+No dependency installation or build step is required.
 
 ## Files
 
