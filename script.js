@@ -67,6 +67,14 @@
         count.textContent = `Showing ${visible} project${visible === 1 ? "" : "s"}`;
       }),
     );
+    // Links to a specific project (such as Recognition → Jal Nidhi AI) clear
+    // the filter first, so the target card is never hidden.
+    const showAll = document.querySelector('[data-filter="all"]');
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      const target = link && document.getElementById(link.hash.slice(1));
+      if (target?.hidden && target.dataset.category && showAll) showAll.click();
+    });
   }
 
   const copyButton = document.querySelector(".copy-email");
@@ -84,6 +92,30 @@
         copyStatus.textContent =
           "Could not copy automatically. Select the email address above or use Say hello.";
       }
+    });
+  }
+
+  // Reveal sections as they scroll into view. Content stays visible without
+  // JavaScript, without IntersectionObserver, and with reduced motion.
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if ("IntersectionObserver" in window && !reduceMotion.matches) {
+    const revealItems = document.querySelectorAll(
+      ".section-heading, .project-card, .about-grid > *, .skill-card, .learning-roadmap, .recognition-card, .contact-section > h2",
+    );
+    const revealer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          revealer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+    );
+    document.documentElement.classList.add("js-reveal");
+    revealItems.forEach((item) => {
+      item.classList.add("reveal");
+      revealer.observe(item);
     });
   }
 
