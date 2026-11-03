@@ -70,14 +70,30 @@
         count.textContent = `Showing ${visible} project${visible === 1 ? "" : "s"}`;
       }),
     );
-    // Links to a specific project (such as Recognition → Jal Nidhi AI) clear
-    // the filter first, so the target card is never hidden.
+    // Reveal project links before the browser scrolls, including nested targets.
     const showAll = document.querySelector('[data-filter="all"]');
+    const revealProject = (hash, scroll = false) => {
+      let id;
+      try {
+        id = decodeURIComponent(hash.slice(1));
+      } catch {
+        return; // Ignore malformed fragments without breaking other controls.
+      }
+      const target = document.getElementById(id);
+      const project = target?.closest("[data-category]");
+      if (!project?.hidden || !showAll) return;
+      showAll.click();
+      if (scroll) target.scrollIntoView({ block: "start" });
+    };
     document.addEventListener("click", (event) => {
       const link = event.target.closest('a[href^="#"]');
-      const target = link && document.getElementById(link.hash.slice(1));
-      if (target?.hidden && target.dataset.category && showAll) showAll.click();
+      if (link) revealProject(link.hash);
     });
+    // Back/Forward and address-bar edits can navigate without a link click.
+    window.addEventListener("hashchange", () =>
+      revealProject(window.location.hash, true),
+    );
+    revealProject(window.location.hash, true);
   }
 
   const copyButton = document.querySelector(".copy-email");
