@@ -31,8 +31,11 @@
     });
     mobile.addEventListener("change", () => {
       const focusWasInMenu = navigation.contains(document.activeElement);
+      const focusWasOnToggle = document.activeElement === menuButton;
       menuButton.hidden = !mobile.matches;
       setMenu(false, mobile.matches && focusWasInMenu);
+      if (!mobile.matches && focusWasOnToggle)
+        navigation.querySelector("a")?.focus();
     });
   }
 
