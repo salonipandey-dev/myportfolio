@@ -38,18 +38,18 @@ No dependency installation or build step is required.
 | `index.html`                  | Homepage content and inline pixel-art SVGs                    |
 | `styleprofile.css`            | Color tokens, layout, and responsive styles                   |
 | `script.js`                   | Mobile menu, copy email, active-section links, scroll reveals |
-| `mypic.jpg`, `images/`        | Portrait files and the MedAssist application screenshot       |
+| `imagep.png.jpeg`, `images/`  | Original photo, hero portrait crop, MedAssist screenshot      |
 | `favicon.svg`                 | Portfolio favicon                                             |
 | `profile.html`, `redirect.js` | Compatibility entry for older portfolio links                 |
 
 ## Design
 
-A near-black canvas with emerald (`--emerald`) and antique gold (`--gold`) accents. All colors are CSS variables at the top of `styleprofile.css`. The page runs in this order: a centered text-only hero, About with a pixel-art cat, Skills, Education & Project Experience, Projects, and Contact.
+A near-black canvas with emerald (`--emerald`) and antique gold (`--gold`) accents. All colors are CSS variables at the top of `styleprofile.css`. The page runs in this order: a centered hero with my portrait (`images/portrait-hero.webp`, a square crop of `imagep.png.jpeg`), About with an animated pixel-art coffee mug, Skills, Education & Project Experience, Projects, and Contact.
 
 - Skill tags are solid when the skill is used in a project and dashed when I am currently learning it.
 - MedAssist is featured first with a real application screenshot on fictional data. The other project previews are decorative pixel art, not screenshots.
 - Contact uses a direct "Email Me" `mailto:` action plus an optional copy button. There is no form backend, and the Content Security Policy blocks form submissions.
-- Keyboard focus is visible, the mobile menu works with the keyboard and closes on Escape, and reveal animations are skipped with `prefers-reduced-motion`.
+- Keyboard focus is visible, the mobile menu works with the keyboard and closes on Escape, and the steam, sparkle, and reveal animations stop with `prefers-reduced-motion`.
 - Content and navigation work without JavaScript.
 
 ## Updating content

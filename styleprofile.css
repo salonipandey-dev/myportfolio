@@ -2,7 +2,7 @@
 :root {
   --bg: #070c0a;
   --card: #101a16;
-  --emerald: #40d99c;
+  --emerald: #1f9d6e;
   --gold: #d7b56d;
   --text: #f4f6f1;
   --muted: #b4c1b9;
@@ -12,11 +12,14 @@
 
   /* Pixel-art palette */
   --px-emerald: var(--emerald);
-  --px-shade: #2a9e72;
-  --px-light: #9cf0cc;
+  --px-shade: #136a4b;
+  --px-light: #63c79d;
   --px-ink: var(--bg);
   --px-gold: var(--gold);
   --px-muted: #24392f;
+  --px-coffee: #3a2417;
+  --px-bean: #6b4527;
+  --px-saucer: #1c2c25;
 
   --radius: 12px;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -211,7 +214,7 @@ main:focus {
   color: var(--on-emerald);
 }
 .button-primary:hover {
-  background: #6ae4b3;
+  background: #27b07e;
 }
 .button-secondary {
   background: transparent;
@@ -248,7 +251,7 @@ main:focus {
   padding: 6px 18px;
   border: 1px solid var(--emerald);
   border-radius: 999px;
-  background: rgb(64 217 156 / 0.1);
+  background: rgb(31 157 110 / 0.1);
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -308,6 +311,17 @@ h2.subheading {
   align-items: center;
   text-align: center;
 }
+.hero-portrait {
+  width: 168px;
+  height: 168px;
+  margin-bottom: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--emerald);
+  box-shadow:
+    0 0 0 6px var(--bg),
+    0 0 0 7px var(--gold);
+}
 .hero h1 {
   margin-top: 22px;
   font-size: clamp(2.6rem, 6vw, 4.6rem);
@@ -360,10 +374,52 @@ h2.subheading {
   display: flex;
   justify-content: center;
 }
-.pixel-cat {
-  width: min(100%, 400px);
+.pixel-coffee {
+  width: min(100%, 380px);
   height: auto;
-  image-rendering: pixelated;
+  overflow: visible;
+}
+/* Steam rises and fades; sparkles twinkle. Both stop with reduced motion. */
+.steam {
+  opacity: 0;
+  animation: steam-rise 3.6s ease-in-out infinite;
+}
+.steam-2 {
+  animation-delay: 1.2s;
+}
+.steam-3 {
+  animation-delay: 2.4s;
+}
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  35% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+.twinkle {
+  animation: twinkle 2.8s ease-in-out infinite;
+}
+.twinkle-2 {
+  animation-delay: 0.9s;
+}
+.twinkle-3 {
+  animation-delay: 1.8s;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
 }
 
 /* ---------- Skills ---------- */
@@ -489,7 +545,7 @@ h2.subheading {
   border-color: var(--line-strong);
 }
 .project-card.featured {
-  border-color: rgb(64 217 156 / 0.55);
+  border-color: rgb(31 157 110 / 0.55);
 }
 .project-preview {
   position: relative;
@@ -511,7 +567,7 @@ h2.subheading {
   background:
     radial-gradient(
         circle at 1px 1px,
-        rgb(64 217 156 / 0.12) 1px,
+        rgb(31 157 110 / 0.12) 1px,
         transparent 0
       )
       0 0 / 12px 12px,
@@ -748,8 +804,13 @@ h2.subheading {
   .about-grid {
     gap: 28px;
   }
-  .pixel-cat {
-    width: min(100%, 300px);
+  .pixel-coffee {
+    width: min(100%, 280px);
+  }
+  .hero-portrait {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 22px;
   }
   .project-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -823,5 +884,13 @@ h2.subheading {
   .js-reveal .reveal {
     opacity: 1;
     transform: none;
+  }
+  .steam,
+  .twinkle {
+    animation: none;
+    opacity: 0.85;
+  }
+  .steam {
+    opacity: 0.7;
   }
 }

@@ -128,6 +128,14 @@
     <main id="main-content" tabindex="-1">
       <section class="hero" id="home" aria-labelledby="hero-title">
         <div class="container hero-inner">
+          <img
+            class="hero-portrait"
+            src="images/portrait-hero.webp"
+            width="480"
+            height="480"
+            alt="Portrait of Saloni Pandey, smiling"
+            fetchpriority="high"
+          />
           <p class="pill">Open to internships &amp; entry-level roles</p>
           <h1 id="hero-title">Hey, I’m <span class="accent">Saloni</span>.</h1>
           <p class="hero-role">Aspiring Data Analyst &amp; Developer</p>
@@ -163,39 +171,83 @@
               I document every project honestly: what it does, what I built, and
               what is still in progress.
             </p>
+            <p>
+              Outside code: music, crochet, creative design, K-dramas, and a
+              good cup of coffee.
+            </p>
           </div>
           <figure class="about-art">
             <svg
-              class="pixel-cat"
-              viewBox="0 0 51 29"
+              class="pixel-coffee"
+              viewBox="0 0 52 34"
               role="img"
-              aria-label="Pixel-art illustration of an emerald cat loafing, with a gold collar and gold sparkles"
+              aria-label="Pixel-art illustration of a steaming emerald coffee mug with a gold heart, on a saucer beside two coffee beans"
               shape-rendering="crispEdges"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                fill="var(--px-emerald)"
-                d="M30 6h1v1h-1zM38 6h1v1h-1zM30 7h2v1h-2zM37 7h2v1h-2zM30 8h1v1h-1zM32 8h1v1h-1zM36 8h1v1h-1zM38 8h1v1h-1zM30 9h9v1h-9zM5 10h4v1h-4zM29 10h11v1h-11zM4 11h2v1h-2zM8 11h2v1h-2zM29 11h11v1h-11zM4 12h2v1h-2zM9 12h2v1h-2zM29 12h2v1h-2zM33 12h3v1h-3zM38 12h2v1h-2zM4 13h2v1h-2zM29 13h2v1h-2zM33 13h3v1h-3zM38 13h2v1h-2zM4 14h2v1h-2zM29 14h4v1h-4zM35 14h5v1h-5zM4 15h2v1h-2zM17 15h9v1h-9zM29 15h3v1h-3zM33 15h2v1h-2zM36 15h4v1h-4zM4 16h2v1h-2zM15 16h3v1h-3zM19 16h3v1h-3zM23 16h3v1h-3zM27 16h1v1h-1zM30 16h9v1h-9zM4 17h2v1h-2zM13 17h5v1h-5zM19 17h3v1h-3zM23 17h3v1h-3zM27 17h2v1h-2zM5 18h2v1h-2zM12 18h18v1h-18zM31 18h2v1h-2zM35 18h3v1h-3zM5 19h3v1h-3zM11 19h29v1h-29zM6 20h3v1h-3zM10 20h30v1h-30zM7 21h33v1h-33zM8 22h15v1h-15zM30 22h10v1h-10zM9 23h14v1h-14zM30 23h9v1h-9zM10 24h4v1h-4zM15 24h4v1h-4zM32 24h4v1h-4zM37 24h4v1h-4z"
-              />
+              <g class="steam steam-1">
+                <path
+                  fill="var(--px-light)"
+                  d="M17 4h1v1h-1zM16 5h1v1h-1zM16 6h1v1h-1zM17 7h1v1h-1zM17 8h1v1h-1zM16 9h1v1h-1zM16 10h1v1h-1z"
+                />
+              </g>
+              <g class="steam steam-2">
+                <path
+                  fill="var(--px-light)"
+                  d="M23 4h1v1h-1zM22 5h1v1h-1zM22 6h1v1h-1zM23 7h1v1h-1zM23 8h1v1h-1zM22 9h1v1h-1zM22 10h1v1h-1z"
+                />
+              </g>
+              <g class="steam steam-3">
+                <path
+                  fill="var(--px-light)"
+                  d="M29 4h1v1h-1zM28 5h1v1h-1zM28 6h1v1h-1zM29 7h1v1h-1zM29 8h1v1h-1zM28 9h1v1h-1zM28 10h1v1h-1z"
+                />
+              </g>
+              <g class="twinkle twinkle-1">
+                <path
+                  fill="var(--px-gold)"
+                  d="M6 6h1v1h-1zM6 7h1v1h-1zM4 8h5v1h-5zM6 9h1v1h-1zM6 10h1v1h-1z"
+                />
+              </g>
+              <g class="twinkle twinkle-2">
+                <path
+                  fill="var(--px-gold)"
+                  d="M43 4h1v1h-1zM43 5h1v1h-1zM41 6h5v1h-5zM43 7h1v1h-1zM43 8h1v1h-1z"
+                />
+              </g>
+              <g class="twinkle twinkle-3">
+                <path
+                  fill="var(--px-gold)"
+                  d="M47 18h1v1h-1zM47 19h1v1h-1zM45 20h5v1h-5zM47 21h1v1h-1zM47 22h1v1h-1z"
+                />
+              </g>
               <path
                 fill="var(--px-light)"
-                d="M31 8h1v1h-1zM37 8h1v1h-1zM32 13h1v1h-1zM37 13h1v1h-1zM26 14h2v1h-2zM41 14h2v1h-2zM41 16h2v1h-2zM10 25h4v1h-4zM15 25h4v1h-4zM32 25h4v1h-4zM37 25h4v1h-4z"
+                d="M12 14h20v1h-20zM13 17h2v1h-2zM13 18h1v1h-1zM13 19h1v1h-1zM13 20h1v1h-1zM13 21h1v1h-1zM13 22h1v1h-1zM13 23h1v1h-1zM13 24h1v1h-1z"
               />
               <path
-                fill="var(--px-ink)"
-                d="M31 12h2v1h-2zM36 12h2v1h-2zM31 13h1v1h-1zM36 13h1v1h-1z"
+                fill="var(--px-emerald)"
+                d="M11 15h1v1h-1zM32 15h1v1h-1zM11 16h1v1h-1zM32 16h1v1h-1zM11 17h2v1h-2zM15 17h16v1h-16zM32 17h5v1h-5zM11 18h2v1h-2zM14 18h17v1h-17zM32 18h6v1h-6zM11 19h2v1h-2zM14 19h17v1h-17zM32 19h1v1h-1zM37 19h2v1h-2zM11 20h2v1h-2zM14 20h6v1h-6zM22 20h1v1h-1zM25 20h6v1h-6zM32 20h1v1h-1zM38 20h2v1h-2zM11 21h2v1h-2zM14 21h5v1h-5zM26 21h5v1h-5zM32 21h1v1h-1zM38 21h2v1h-2zM11 22h2v1h-2zM14 22h5v1h-5zM26 22h5v1h-5zM32 22h1v1h-1zM38 22h2v1h-2zM11 23h2v1h-2zM14 23h6v1h-6zM25 23h6v1h-6zM32 23h1v1h-1zM38 23h2v1h-2zM11 24h2v1h-2zM14 24h7v1h-7zM24 24h7v1h-7zM32 24h1v1h-1zM37 24h2v1h-2zM11 25h11v1h-11zM23 25h8v1h-8zM32 25h6v1h-6zM11 26h20v1h-20zM32 26h5v1h-5zM11 27h20v1h-20zM32 27h1v1h-1zM12 28h18v1h-18z"
               />
               <path
-                fill="var(--px-shade)"
-                d="M33 14h2v1h-2zM32 15h1v1h-1zM35 15h1v1h-1zM18 16h1v1h-1zM22 16h1v1h-1zM26 16h1v1h-1zM18 17h1v1h-1zM22 17h1v1h-1zM26 17h1v1h-1zM23 22h7v1h-7zM23 23h7v1h-7z"
+                fill="var(--px-coffee)"
+                d="M12 15h20v1h-20zM13 16h18v1h-18zM41 29h2v1h-2zM46 30h2v1h-2z"
               />
               <path
                 fill="var(--px-gold)"
-                d="M31 17h7v1h-7zM33 18h2v1h-2zM10 2h1v5h-1zM8 4h5v1h-5zM43 1h1v5h-1zM41 3h5v1h-5zM47 19h1v5h-1zM45 21h5v1h-5zM17 2h1v1h-1z"
+                d="M12 16h1v1h-1zM31 16h1v1h-1zM20 20h2v1h-2zM23 20h2v1h-2zM19 21h7v1h-7zM19 22h7v1h-7zM20 23h5v1h-5zM21 24h3v1h-3zM22 25h1v1h-1z"
               />
               <path
-                fill="var(--px-muted)"
-                d="M5 23h2v1h-2zM5 26h2v1h-2zM4 24h1v2h-1zM7 24h1v2h-1zM38 1h2v1h-2zM38 4h2v1h-2zM37 2h1v2h-1zM40 2h1v2h-1zM2 12h1v1h-1zM48 13h1v1h-1z"
+                fill="var(--px-shade)"
+                d="M31 17h1v1h-1zM31 18h1v1h-1zM31 19h1v1h-1zM31 20h1v1h-1zM31 21h1v1h-1zM31 22h1v1h-1zM31 23h1v1h-1zM31 24h1v1h-1zM31 25h1v1h-1zM31 26h1v1h-1zM31 27h1v1h-1zM30 28h2v1h-2zM13 29h18v1h-18z"
+              />
+              <path
+                fill="var(--px-saucer)"
+                d="M7 30h29v1h-29zM9 31h25v1h-25z"
+              />
+              <path
+                fill="var(--px-bean)"
+                d="M41 27h2v1h-2zM40 28h4v1h-4zM40 29h1v1h-1zM43 29h1v1h-1zM40 30h4v1h-4zM41 31h2v1h-2zM46 28h2v1h-2zM45 29h4v1h-4zM45 30h1v1h-1zM48 30h1v1h-1zM45 31h4v1h-4zM46 32h2v1h-2z"
               />
             </svg>
           </figure>
