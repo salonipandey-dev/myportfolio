@@ -1,6 +1,6 @@
 # Saloni Pandey · Portfolio
 
-A responsive personal portfolio built with semantic HTML, CSS, and vanilla JavaScript. It presents my projects, my data analytics learning journey, skills labeled by evidence, and my AI For Good Hackathon recognition.
+A responsive personal portfolio built with semantic HTML, CSS, and vanilla JavaScript. It presents my projects, skills, education and project experience, and contact details for recruiters.
 
 ## Run locally
 
@@ -33,101 +33,32 @@ No dependency installation or build step is required.
 
 ## Files
 
-| File                          | Purpose                                                             |
-| ----------------------------- | ------------------------------------------------------------------- |
-| `index.html`                  | Homepage and portfolio content                                      |
-| `styleprofile.css`            | Colors, layouts, illustrations, and responsive styles               |
-| `script.js`                   | Mobile menu, project filters, copy email, section tracking, reveals |
-| `mypic.jpg`                   | Original profile photo (fallback for browsers without WebP)         |
-| `images/`                     | Optimized WebP portrait and the MedAssist application screenshot    |
-| `favicon.svg`                 | Portfolio favicon                                                   |
-| `profile.html`, `redirect.js` | Compatibility entry for older portfolio links                       |
+| File                          | Purpose                                                       |
+| ----------------------------- | ------------------------------------------------------------- |
+| `index.html`                  | Homepage content and inline pixel-art SVGs                    |
+| `styleprofile.css`            | Color tokens, layout, and responsive styles                   |
+| `script.js`                   | Mobile menu, copy email, active-section links, scroll reveals |
+| `mypic.jpg`, `images/`        | Portrait files and the MedAssist application screenshot       |
+| `favicon.svg`                 | Portfolio favicon                                             |
+| `profile.html`, `redirect.js` | Compatibility entry for older portfolio links                 |
 
-## Features
+## Design
 
-- Positioning that matches my career goal: Data Analyst internships and entry-level analytics roles.
-- Five projects with honest labels for status (prototype, in development, practice), team or solo work, and my role in each. MedAssist is featured with a real application screenshot on fictional data.
-- Skills labeled by evidence: **used in my projects** versus **practicing now**. Only tools that appear in my repositories are listed as used.
-- A learning journey with verified milestones and a learning plan that is clearly not a proficiency claim.
-- Project filtering by applied projects and interface practice, with counts calculated from the page. Links to a specific project clear the filter first.
-- Inline SVG icons from one sprite in `index.html`; no icon font or external requests.
-- A short hero intro and reveal-on-scroll that animate only opacity and transform, and are skipped entirely with `prefers-reduced-motion`.
-- Keyboard-accessible navigation, a stacked mobile menu with 48px tap targets, visible focus, skip link, and new-tab hints for screen readers.
-- Content, project details, navigation, and email links work without JavaScript.
-- Search and sharing metadata, including Open Graph, Twitter card, and schema.org `Person` data.
-- Direct email contact plus LinkedIn and GitHub links, and optional clipboard copying. No simulated message delivery or third-party form service.
-- No runtime JavaScript dependencies. Google Fonts are optional; system fonts are the fallback.
+A near-black canvas with emerald (`--emerald`) and antique gold (`--gold`) accents. All colors are CSS variables at the top of `styleprofile.css`. The page runs in this order: a centered text-only hero, About with a pixel-art cat, Skills, Education & Project Experience, Projects, and Contact.
+
+- Skill tags are solid when the skill is used in a project and dashed when I am currently learning it.
+- MedAssist is featured first with a real application screenshot on fictional data. The other project previews are decorative pixel art, not screenshots.
+- Contact uses a direct "Email Me" `mailto:` action plus an optional copy button. There is no form backend, and the Content Security Policy blocks form submissions.
+- Keyboard focus is visible, the mobile menu works with the keyboard and closes on Escape, and reveal animations are skipped with `prefers-reduced-motion`.
+- Content and navigation work without JavaScript.
 
 ## Updating content
 
-Edit project descriptions, skills, the learning roadmap, recognition, and contact information in `index.html`. Each project card has a `data-category` of `applied` or `practice`; the filter counts update automatically. Project illustrations are decorative CSS artwork, not application screenshots.
-
-Update the "Shipped so far" timeline in the Skills section when you finish a milestone. Only list dates you can show in a repository or certificate.
-
-### Adding an analytics case study
-
-When an analysis and dashboard are ready to review, paste this card into `.project-grid` in `index.html` and replace every placeholder with real details. The styles already exist in `styleprofile.css`. Do not publish placeholder text or estimated results.
-
-```html
-<article class="project-card case-study" data-category="applied">
-  <div class="project-art data-art" aria-hidden="true">
-    <div class="art-topline">
-      <span>PROJECT NAME</span><span>06 / ANALYTICS</span>
-    </div>
-    <div class="data-bars"><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="art-bottom">
-      <span>Short two-line<br />caption.</span>
-    </div>
-  </div>
-  <div class="project-body">
-    <div class="project-meta">
-      <span class="project-label">DATA ANALYSIS · CASE STUDY</span
-      ><span class="project-badge badge-neutral">Solo project</span>
-    </div>
-    <h3>Project name</h3>
-    <p>The problem, and who it matters to.</p>
-    <dl class="case-facts">
-      <div>
-        <dt>Question</dt>
-        <dd>The business question you answered.</dd>
-      </div>
-      <div>
-        <dt>Data</dt>
-        <dd>Source, size, and how you cleaned it.</dd>
-      </div>
-      <div>
-        <dt>Approach</dt>
-        <dd>The SQL, Python, Excel, or Power BI work.</dd>
-      </div>
-      <div>
-        <dt>Key finding</dt>
-        <dd>The result, with its real numbers.</dd>
-      </div>
-    </dl>
-    <ul class="tags">
-      <li>SQL</li>
-      <li>Power BI</li>
-    </ul>
-    <div class="project-links">
-      <a
-        href="https://github.com/salonipandey-dev/REPO"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-describedby="new-tab-note"
-        >Source code</a
-      >
-    </div>
-  </div>
-</article>
-```
-
-Then move SQL, Excel, or Power BI from **Practicing now** to **Used in my projects** in the Skills section, and update the roadmap's "Next milestone" text. To add a screenshot instead of the bar art, follow the MedAssist card: save a WebP under `images/` and use the `project-shot` figure markup.
-
-For email changes, update the `mailto:` links and the displayed address in `index.html`. The copy button reads the displayed address, so `script.js` does not need to change. To change the visual theme, edit the variables at the top of `styleprofile.css`.
+Edit text, skills, timeline entries, projects, and contact links in `index.html`. Only list dates you can show in a repository or certificate. To add a project, copy an existing `<article class="card project-card">`. For a screenshot preview, save a WebP under `images/` and follow the MedAssist card's `<img>` markup. When a skill moves from learning to used, remove its `tag-learning` class.
 
 ## Checks
 
-Format with Prettier (`npx prettier --check index.html styleprofile.css script.js`). Before publishing a change, preview the page at 320px, 375px, 768px, 1024px, and 1440px widths, test the mobile menu with the keyboard, and confirm the page still reads well with JavaScript disabled.
+Format with Prettier (`npx prettier --check index.html styleprofile.css script.js README.md`). Before publishing a change, preview the page at 390px and 1440px widths (plus 768px and 1024px), test the mobile menu with the keyboard, and confirm the page still reads well with JavaScript disabled.
 
 ## Publishing
 

@@ -39,63 +39,6 @@
     });
   }
 
-  const filters = document.querySelectorAll("[data-filter]");
-  const projects = document.querySelectorAll("[data-category]");
-  const toolbar = document.querySelector(".project-toolbar");
-  const count = document.querySelector(".project-count");
-  if (toolbar && filters.length && projects.length) {
-    toolbar.hidden = false;
-    const matches = (project, filter) =>
-      filter === "all" || project.dataset.category === filter;
-    // Keep the filter badges in sync with the cards in the page.
-    filters.forEach((button) => {
-      const badge = button.querySelector(".filter-count");
-      const total = [...projects].filter((project) =>
-        matches(project, button.dataset.filter),
-      ).length;
-      if (badge) badge.textContent = String(total).padStart(2, "0");
-    });
-    filters.forEach((button) =>
-      button.addEventListener("click", () => {
-        filters.forEach((filter) => {
-          const active = filter === button;
-          filter.classList.toggle("active", active);
-          filter.setAttribute("aria-pressed", String(active));
-        });
-        let visible = 0;
-        projects.forEach((project) => {
-          project.hidden = !matches(project, button.dataset.filter);
-          if (!project.hidden) visible += 1;
-        });
-        count.textContent = `Showing ${visible} project${visible === 1 ? "" : "s"}`;
-      }),
-    );
-    // Reveal project links before the browser scrolls, including nested targets.
-    const showAll = document.querySelector('[data-filter="all"]');
-    const revealProject = (hash, scroll = false) => {
-      let id;
-      try {
-        id = decodeURIComponent(hash.slice(1));
-      } catch {
-        return; // Ignore malformed fragments without breaking other controls.
-      }
-      const target = document.getElementById(id);
-      const project = target?.closest("[data-category]");
-      if (!project?.hidden || !showAll) return;
-      showAll.click();
-      if (scroll) target.scrollIntoView({ block: "start" });
-    };
-    document.addEventListener("click", (event) => {
-      const link = event.target.closest('a[href^="#"]');
-      if (link) revealProject(link.hash);
-    });
-    // Back/Forward and address-bar edits can navigate without a link click.
-    window.addEventListener("hashchange", () =>
-      revealProject(window.location.hash, true),
-    );
-    revealProject(window.location.hash, true);
-  }
-
   const copyButton = document.querySelector(".copy-email");
   const copyStatus = document.querySelector(".copy-status");
   // Read the address from the page so it only needs updating in index.html.
@@ -105,11 +48,10 @@
     copyButton.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(email);
-        copyStatus.textContent =
-          "Email copied. Say hello whenever you’re ready.";
+        copyStatus.textContent = "Email copied to your clipboard.";
       } catch {
         copyStatus.textContent =
-          "Could not copy automatically. Select the email address above or use Say hello.";
+          "Could not copy automatically. Select the email address above or use Email Me.";
       }
     });
   }
@@ -119,7 +61,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   if ("IntersectionObserver" in window && !reduceMotion.matches) {
     const revealItems = document.querySelectorAll(
-      ".section-heading, .project-card, .about-grid > *, .skill-card, .learning-roadmap, .recognition-card, .contact-section > h2",
+      ".section-head, .subheading, .about-grid > *, .skill-card, .timeline-item, .project-card, .contact-grid > *",
     );
     const revealer = new IntersectionObserver(
       (entries) => {
