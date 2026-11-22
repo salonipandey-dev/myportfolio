@@ -2,6 +2,8 @@
 
 A responsive personal portfolio built with semantic HTML, CSS, and vanilla JavaScript. It presents my projects, skills, education and project experience, and contact details for recruiters.
 
+[View the live portfolio](https://salonipandey-dev.github.io/myportfolio/)
+
 ## Run locally
 
 Clone the repository and open its folder:
@@ -62,9 +64,7 @@ Format with Prettier (`npx prettier --check index.html styleprofile.css script.j
 
 ## Publishing
 
-The site is ready for a static host. For GitHub Pages, select the intended branch and its root folder in the repository's Pages settings. `index.html` is the homepage; `profile.html` keeps old links working. This README does not imply that hosting is already configured.
-
-After the site has a public URL, add `<link rel="canonical">`, `og:url`, and an absolute `og:image` URL to the `<head>` of `index.html` so link previews show the right page and image.
+GitHub Pages publishes the root of `main` whenever a change lands on that branch. The homepage is `index.html`. Older links to `profile.html` redirect to it.
 
 ## Contact
 
