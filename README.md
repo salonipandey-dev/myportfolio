@@ -38,7 +38,7 @@ No dependency installation or build step is required.
 | `index.html`                  | Homepage content and inline pixel-art SVGs                    |
 | `styleprofile.css`            | Color tokens, layout, and responsive styles                   |
 | `script.js`                   | Mobile menu, copy email, active-section links, scroll reveals |
-| `imagep.png.jpeg`, `images/`  | Original photo, hero portrait crop, MedAssist screenshot      |
+| `imagep.png.jpeg`, `images/`  | Original photo, hero portrait crop, project screenshots       |
 | `favicon.svg`                 | Portfolio favicon                                             |
 | `profile.html`, `redirect.js` | Compatibility entry for older portfolio links                 |
 
@@ -47,14 +47,14 @@ No dependency installation or build step is required.
 A near-black canvas with emerald (`--emerald`) and antique gold (`--gold`) accents. All colors are CSS variables at the top of `styleprofile.css`. The page runs in this order: a centered hero with my portrait (`images/portrait-hero.webp`, a square crop of `imagep.png.jpeg`), About with an animated pixel-art coffee mug, Skills, Education & Project Experience, Projects, and Contact.
 
 - Skill tags are solid when the skill is used in a project and dashed when I am currently learning it.
-- MedAssist is featured first with a real application screenshot on fictional data. The other project previews are decorative pixel art, not screenshots.
+- MedAssist is featured first. MedAssist and LIFE.EXE show application screenshots, and the remaining projects use decorative pixel art.
 - Contact uses a direct "Email Me" `mailto:` action plus an optional copy button. There is no form backend, and the Content Security Policy blocks form submissions.
 - Keyboard focus is visible, the mobile menu works with the keyboard and closes on Escape, and the steam, sparkle, and reveal animations stop with `prefers-reduced-motion`.
 - Content and navigation work without JavaScript.
 
 ## Updating content
 
-Edit text, skills, timeline entries, projects, and contact links in `index.html`. Only list dates you can show in a repository or certificate. To add a project, copy an existing `<article class="card project-card">`. For a screenshot preview, save a WebP under `images/` and follow the MedAssist card's `<img>` markup. When a skill moves from learning to used, remove its `tag-learning` class.
+Edit text, skills, timeline entries, projects, and contact links in `index.html`. Only list dates you can show in a repository or certificate. To add a project, copy an existing `<article class="card project-card">`. For a screenshot preview, save the image under `images/` and follow the MedAssist card's `<img>` markup. When a skill moves from learning to used, remove its `tag-learning` class.
 
 ## Checks
 
