@@ -38,13 +38,13 @@ No dependency installation or build step is required.
 | `index.html`                  | Homepage content and inline pixel-art SVGs                    |
 | `styleprofile.css`            | Color tokens, layout, and responsive styles                   |
 | `script.js`                   | Mobile menu, copy email, active-section links, scroll reveals |
-| `imagep.png.jpeg`, `images/`  | Original photo, hero portrait crop, project screenshots       |
+| `images/`                     | Hero portrait, project screenshots                            |
 | `favicon.svg`                 | Portfolio favicon                                             |
 | `profile.html`, `redirect.js` | Compatibility entry for older portfolio links                 |
 
 ## Design
 
-A near-black canvas with emerald (`--emerald`) and antique gold (`--gold`) accents. All colors are CSS variables at the top of `styleprofile.css`. The page runs in this order: a centered hero with my portrait (`images/portrait-hero.webp`, a square crop of `imagep.png.jpeg`), About with an animated pixel-art coffee mug, Skills, Education & Project Experience, Projects, and Contact.
+A near-black canvas with emerald (`--emerald`) and antique gold (`--gold`) accents. All colors are CSS variables at the top of `styleprofile.css`. The page runs in this order: a centered hero with my portrait (`images/profilepic.png`), About with an animated pixel-art coffee mug, Skills, Education & Project Experience, Projects, and Contact.
 
 - Skill tags are solid when the skill is used in a project and dashed when I am currently learning it.
 - MedAssist is featured first. MedAssist and LIFE.EXE show application screenshots, and the remaining projects use decorative pixel art.
